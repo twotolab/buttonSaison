@@ -1,0 +1,131 @@
+
+<html>
+	<head>
+		<title>test2</title>
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.6.0/build/reset/reset-min.css">
+		<style type="text/css" media="screen">
+			body{
+				background-color: grey;
+			}
+			.wrapperButtSaison {
+				/*overflow:visible;*/
+				position:relative;
+				top:10px;
+				background-color: transparent;
+			}	
+			.backgroundButtSaison {
+				position:absolute;
+			}			
+			.containerBoxSaison{
+				position:relative;
+				width: 40px;
+				height: 40px;
+				background-color: transparent;
+				overflow:hidden;
+				
+				}
+			.arrowButtSaison {
+				position:absolute;
+				background-color: transparent;
+				top:-10px;
+				left: -4px;
+			}
+			a.buttonLeftSaison{
+				position:absolute;
+				background-color: transparent;
+				width: 40px;
+				height: 40px;
+				cursor:pointer;
+				cursor:hand;
+			}
+			a.buttonRightSaison{
+				position:absolute;
+				background-color: transparent;
+				width: 40px;
+				height: 40px;
+				left: 40px;
+				cursor:pointer;
+				cursor:hand;
+			}
+			.activButIconSaison {
+			    position:relative;
+				background-color: transparent;
+			}
+			.rollOverButtSaison {
+			    position:absolute;
+				background-color: transparent;
+				opacity:0;
+			}
+			.hoverSaison{
+				opacity:0.4;
+				background-color: black;
+			}
+	
+	</style>
+	</head>
+	<body>
+	<div class="wrapperButtSaison" >
+		<div class="backgroundButtSaison">
+			<img src="images/backgroundButtonSaison.png" alt="backgroundButtonSaison" width="80" height="40" />
+		</div>
+		<div class="rollOverButtSaison">
+			<img src="images/rollOverButtSaison.png" alt="rollOverButtSaison" width="80" height="40" />
+		</div>
+		<div class="arrowButtSaison">
+			<img src="images/arrowButtSaison.png" alt="arrowButtSaison" width="49" height="55" />
+		</div>
+		<a class="buttonLeftSaison"></a>
+		<a class="buttonRightSaison"></a>
+		<div class="containerBoxSaison">
+			<div class="activButIconSaison">
+				 <img src="images/activButIconSaison.png" alt="transition" width="80" height="40" />
+			</div>
+		
+		</div>
+	</div>
+	</body>
+	<script>
+	var displacement = $(".containerBoxSaison").width();
+	//
+	
+	// left 
+	// rollOver
+	$("a.buttonLeftSaison").hover(
+	  function () {
+	    $(".rollOverButtSaison").addClass("hoverSaison");
+	  },
+	  function () {
+		$(".rollOverButtSaison").removeClass("hoverSaison");
+	  }
+	);
+	// click
+	$("a.buttonLeftSaison").click(function(){
+		
+		$(".arrowButtSaison").stop().animate({"left": "-="+displacement+"px"}, "fast");
+		$(".containerBoxSaison").stop().animate({"left": "-="+displacement+"px"}, "fast");
+		$(".activButIconSaison").stop().animate({"right": "-="+displacement+"px"}, "fast");
+		$(".rollOverButtSaison").removeClass("hoverSaison");
+
+	});	
+	// right
+	// rollOver
+	 $("a.buttonRightSaison").hover(
+		  function () {
+		    $(".rollOverButtSaison").addClass("hoverSaison");
+		  },
+		  function () {
+		    $(".rollOverButtSaison").removeClass("hoverSaison");
+		  }
+	);
+	// click
+	$("a.buttonRightSaison").click(function(){
+		$(".arrowButtSaison").stop().animate({"left": "+="+displacement+"px"}, "fast");
+		$(".containerBoxSaison").stop().animate({"left": "+="+displacement+"px"}, "fast");
+		$(".activButIconSaison").stop().animate({"right": "+="+displacement+"px"}, "fast");
+		$(".rollOverButtSaison").removeClass("hoverSaison");
+		
+	});	
+</script>
+</html>
+
